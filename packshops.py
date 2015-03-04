@@ -7,7 +7,7 @@ class MyHTMLParser(HTMLParser):
 	textpart = False
 	titlepart = False
 	count = 0
-	f = open('packit.txt', 'w')
+	f = open('packshops.txt', 'w')
 
 	def handle_starttag(self, tag, attrs):
 		if tag == 'a':
@@ -55,15 +55,21 @@ class MyHTMLParser(HTMLParser):
 
 
 # 将url的不可变部分固定下来，并设置headers模拟浏览器身份访问网页，方式被403 Forbidden
-url = 'http://www.dianping.com/search/category/2/20/g120p%d?aid=57f5c1b69be2798a2d593ffe88978885'
-filename = 'page%d.html'
+# clothes
+# url = 'http://www.dianping.com/search/category/2/20/g120p%d?aid=57f5c1b69be2798a2d593ffe88978885'
+# supermarkets
+# url = 'http://www.dianping.com/search/category/2/20/g187p%d?aid=d573689841d53e74033309968a481515&tc=1'
+# jewelry
+# url = 'http://www.dianping.com/search/category/2/20/g122p%d'
+# digital products
+url = 'http://www.dianping.com/search/category/2/20/g124p%d'
+
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7'}
 
-# 爬取所有50页北京的商店信息  
-for i in range(45, 51):  
+# 爬取所有北京的商店信息  
+for i in range(15, 51):
     cur_url = url % (i)
-    print cur_url
-    cur_filename = filename % (i)  
+    print cur_url 
     # 下载数据
     request = urllib2.Request(cur_url, '', headers)
     response = urllib2.urlopen(request)
