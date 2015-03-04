@@ -1,3 +1,5 @@
-for i in range(1,3):
-	print 'test', i
-x = raw_input()
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+print sys.stdin.encoding
+raw_input()
